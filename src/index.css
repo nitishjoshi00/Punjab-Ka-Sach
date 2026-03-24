@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-saffron: #E8560A;
+  --color-brand-navy: #0A1628;
+  --color-brand-gold: #F5A623;
+  
+  --font-hindi: "Hind", "Tiro Devanagari Hindi", sans-serif;
+  --font-display: "Playfair Display", serif;
+  --font-serif: "Source Serif 4", serif;
+
+  --animate-marquee: marquee 20s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-white text-brand-navy font-serif transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply bg-brand-navy text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  .hindi-text {
+    @apply font-hindi;
+  }
+}
+
+@layer components {
+  .btn-saffron {
+    @apply bg-brand-saffron text-white px-6 py-2 rounded-full font-bold hover:opacity-90 transition-all;
+  }
+  
+  .card-shadow {
+    @apply shadow-md hover:shadow-xl transition-shadow duration-300;
+  }
+
+  .ticker-wrap {
+    @apply overflow-hidden whitespace-nowrap bg-red-600 text-white py-1;
+  }
+
+  .ticker-content {
+    @apply inline-block animate-marquee;
+  }
+}
+
+/* Skeleton Loading */
+.skeleton {
+  @apply bg-gray-200 animate-pulse rounded;
+}
+
+.dark .skeleton {
+  @apply bg-gray-700;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-saffron rounded-full;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-brand-navy;
+}
